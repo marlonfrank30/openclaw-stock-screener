@@ -29,13 +29,13 @@ openclaw-stock-screener/
 | `scripts/screener.py` | Batch screener with presets (momentum, value, breakout, oversold reversal) |
 | `references/scripts_guide.md` | Usage reference, popular ticker lists, dashboard guidance |
 
----
-## 📦 To get started:
+### Getting Started
 
-Place SKILL.md in your OpenClaw skills directory <br>
-Put the scripts/ folder alongside it  <br>
-Run pip install yfinance pandas numpy in your environment  <br>
-Test with: python3 scripts/analyze_stock.py --ticker AAPL
+1. Place `SKILL.md` in your OpenClaw skills directory
+2. Put the `scripts/` folder alongside it
+3. Run `pip install yfinance pandas numpy` in your environment
+4. Test with: `python3 scripts/analyze_stock.py --ticker AAPL`
+
 
 ---
 
