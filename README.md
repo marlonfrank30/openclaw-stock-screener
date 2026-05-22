@@ -19,13 +19,22 @@ openclaw-stock-screener/
 ```
 ---
 
+## 📦 File Summary
+
+| File | Purpose |
+|---|---|
+| `SKILL.md` | The skill definition — drop this into your OpenClaw skills folder |
+| `scripts/indicators.py` | Reusable library: RSI, MACD, Bollinger Bands, volume spike, signal scoring |
+| `scripts/analyze_stock.py` | Single or multi-stock deep analysis with technical + fundamental output |
+| `scripts/screener.py` | Batch screener with presets (momentum, value, breakout, oversold reversal) |
+| `references/scripts_guide.md` | Usage reference, popular ticker lists, dashboard guidance |
+
+---
+
+---
 
 ## ⚙️ Installation
 **Requirements:** Python 3.10+
-
-```bash
-pip install yfinance pandas numpy
-```
 
 ### 1. Clone the repo
 
@@ -71,6 +80,16 @@ source venv/bin/activate
 > **Note:** The `venv/` folder is already in `.gitignore` and will not be pushed to GitHub.
 
 ---
+### 4. OpenClaw Files and Directories
+File Purpose
+SKILL.md - The skill definition — drop this into your OpenClaw skills folderscripts/indicators.pyReusable library: RSI, MACD, Bollinger Bands, volume spike, signal scoringscripts/analyze_stock.pySingle or multi-stock deep analysis with technical + fundamental outputscripts/screener.pyBatch screener with presets (momentum, value, breakout, oversold reversal)references/scripts_guide.mdUsage reference, popular ticker lists, dashboard guidance
+To get started:
+
+Place SKILL.md in your OpenClaw skills directory
+Put the scripts/ folder alongside it
+Run pip install yfinance pandas numpy in your environment
+Test with: python3 scripts/analyze_stock.py --ticker AAPL
+
 
 ## 🔍 analyze_stock.py — Deep Stock Analysis
 
