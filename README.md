@@ -17,23 +17,58 @@ openclaw-stock-screener/
 └── references/
     └── scripts_guide.md      # Full argument reference and ticker lists
 ```
-
 ---
 
-## ⚙️ Installation
 
+## ⚙️ Installation
 **Requirements:** Python 3.10+
 
 ```bash
 pip install yfinance pandas numpy
 ```
 
-Clone the repo:
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/marlonfrank30/openclaw-stock-screener.git
 cd openclaw-stock-screener
 ```
+
+### 2. Create and activate a virtual environment
+
+Modern Linux distributions (Debian, Ubuntu) manage Python system-wide and block direct `pip install`. Use a virtual environment instead:
+
+```bash
+# Create the virtual environment
+python3 -m venv venv
+
+# Activate it
+source venv/bin/activate
+```
+Your terminal prompt will change to show `(venv)` when it's active.
+
+### 3. Install dependencies
+
+```bash
+pip install yfinance pandas numpy
+```
+
+Verify everything installed correctly:
+
+```bash
+python3 -c "import yfinance, pandas, numpy; print('All packages OK')"
+```
+
+### 4. Re-activating in future sessions
+
+The virtual environment only stays active for the current terminal session. Every time you open a new terminal, reactivate it before running any scripts:
+
+```bash
+cd ~/openclaw-stock-screener
+source venv/bin/activate
+```
+
+> **Note:** The `venv/` folder is already in `.gitignore` and will not be pushed to GitHub.
 
 ---
 
