@@ -32,9 +32,9 @@ openclaw-stock-screener/
 ---
 ## 📦 To get started:
 
-Place SKILL.md in your OpenClaw skills directory
-Put the scripts/ folder alongside it
-Run pip install yfinance pandas numpy in your environment
+Place SKILL.md in your OpenClaw skills directory <br>
+Put the scripts/ folder alongside it  <br>
+Run pip install yfinance pandas numpy in your environment  <br>
 Test with: python3 scripts/analyze_stock.py --ticker AAPL
 
 ---
