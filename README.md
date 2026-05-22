@@ -29,7 +29,7 @@ openclaw-stock-screener/
 | `scripts/screener.py` | Batch screener with presets (momentum, value, breakout, oversold reversal) |
 | `references/scripts_guide.md` | Usage reference, popular ticker lists, dashboard guidance |
 
-### Getting Started
+## Getting Started
 
 1. Place `SKILL.md` in your OpenClaw skills directory
 2. Put the `scripts/` folder alongside it
