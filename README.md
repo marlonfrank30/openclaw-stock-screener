@@ -74,7 +74,25 @@ Verify everything installed correctly:
 python3 -c "import yfinance, pandas, numpy; print('All packages OK')"
 ```
 
-### 4. Re-activating in future sessions
+### 4. Get a free Alpha Vantage API key
+
+This project uses [Alpha Vantage](https://www.alphavantage.co/) for stock data. Yahoo Finance blocks server and datacenter IPs — Alpha Vantage works reliably from any environment.
+
+1. Get a free key at [https://www.alphavantage.co/support/#api-key](https://www.alphavantage.co/support/#api-key)
+2. Set it as an environment variable:
+
+```bash
+export ALPHA_VANTAGE_KEY="your_key_here"
+
+# To make it permanent across sessions:
+echo 'export ALPHA_VANTAGE_KEY="your_key_here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+> **Free tier limits:** 25 requests/day, ~5 requests/minute. Each ticker uses 2 API calls (quote + fundamentals), so the free tier covers ~12 tickers per day. For larger scans, consider the [premium plan](https://www.alphavantage.co/premium/).
+
+
+### 5. Re-activating in future sessions
 
 The virtual environment only stays active for the current terminal session. Every time you open a new terminal, reactivate it before running any scripts:
 
@@ -86,7 +104,7 @@ source venv/bin/activate
 > **Note:** The `venv/` folder is already in `.gitignore` and will not be pushed to GitHub.
 
 ---
-### 4. OpenClaw Files and Directories
+### 6. OpenClaw Files and Directories
 File Purpose
 SKILL.md - The skill definition — drop this into your OpenClaw skills folderscripts/indicators.pyReusable library: RSI, MACD, Bollinger Bands, volume spike, signal scoringscripts/analyze_stock.pySingle or multi-stock deep analysis with technical + fundamental outputscripts/screener.pyBatch screener with presets (momentum, value, breakout, oversold reversal)references/scripts_guide.mdUsage reference, popular ticker lists, dashboard guidance
 To get started:
