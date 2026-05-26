@@ -1,6 +1,6 @@
 # 📈 OpenClaw Stock Screener
 
-An agentic stock analysis and screening toolkit powered by [Yahoo Finance](https://finance.yahoo.com/). Scan, filter, and deep-analyse shares using a full suite of technical and fundamental indicators — built as a skill for the [OpenClaw](https://github.com/marlonfrank30) AI agent framework.
+An agentic stock analysis and screening toolkit powered by [Alpha Vantage](https://www.alphavantage.co). Scan, filter, and deep-analyse shares using a full suite of technical and fundamental indicators — built as a skill for the [OpenClaw](https://github.com/marlonfrank30) AI agent framework.
 
 ---
 
