@@ -71,7 +71,7 @@ pip install yfinance pandas numpy
 Verify everything installed correctly:
 
 ```bash
-python3 -c "import yfinance, pandas, numpy; print('All packages OK')"
+python3 -c "import requests, pandas, numpy; print('All packages OK')"
 ```
 
 ### 4. Get a free Alpha Vantage API key
