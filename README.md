@@ -1,6 +1,6 @@
 # 📈 OpenClaw Stock Screener
 
-An agentic stock analysis and screening toolkit powered by [Alpha Vantage](https://www.alphavantage.co). Scan, filter, and deep-analyse shares using a full suite of technical and fundamental indicators — built as a skill for the [OpenClaw](https://github.com/marlonfrank30) AI agent framework.
+An agentic stock analysis and screening toolkit powered by [Alpha Vantage](https://www.alphavantage.co/). Scan, filter, and deep-analyse shares using a full suite of technical and fundamental indicators — built as a skill for the [OpenClaw](https://github.com/marlonfrank30) AI agent framework. Scan, filter, and deep-analyse shares using a full suite of technical and fundamental indicators — built as a skill for the [OpenClaw](https://github.com/marlonfrank30) AI agent framework.
 
 ---
 
@@ -11,12 +11,14 @@ openclaw-stock-screener/
 ├── SKILL.md                  # OpenClaw skill definition
 ├── README.md                 # This file
 ├── scripts/
+│   ├── av_client.py          # Alpha Vantage API client (data fetching)
 │   ├── indicators.py         # RSI, MACD, Bollinger Bands, SMA, signal scoring
 │   ├── analyze_stock.py      # Single or multi-stock deep analysis
 │   └── screener.py           # Batch screener with fundamental + technical filters
 └── references/
     └── scripts_guide.md      # Full argument reference and ticker lists
 ```
+
 ---
 
 ## 📦 File Summary
@@ -24,22 +26,23 @@ openclaw-stock-screener/
 | File | Purpose |
 |---|---|
 | `SKILL.md` | The skill definition — drop this into your OpenClaw skills folder |
+| `scripts/av_client.py` | Alpha Vantage API client — fetches quotes, price history, and fundamentals |
 | `scripts/indicators.py` | Reusable library: RSI, MACD, Bollinger Bands, volume spike, signal scoring |
 | `scripts/analyze_stock.py` | Single or multi-stock deep analysis with technical + fundamental output |
 | `scripts/screener.py` | Batch screener with presets (momentum, value, breakout, oversold reversal) |
 | `references/scripts_guide.md` | Usage reference, popular ticker lists, dashboard guidance |
 
-## 📦 Getting Started
+### Getting Started
 
 1. Place `SKILL.md` in your OpenClaw skills directory
 2. Put the `scripts/` folder alongside it
 3. Run `pip install requests pandas numpy` in your environment
 4. Test with: `python3 scripts/analyze_stock.py --ticker AAPL`
 
-
 ---
 
 ## ⚙️ Installation
+
 **Requirements:** Python 3.10+
 
 ### 1. Clone the repo
@@ -60,12 +63,13 @@ python3 -m venv venv
 # Activate it
 source venv/bin/activate
 ```
+
 Your terminal prompt will change to show `(venv)` when it's active.
 
 ### 3. Install dependencies
 
 ```bash
-pip install yfinance pandas numpy
+pip install requests pandas numpy
 ```
 
 Verify everything installed correctly:
@@ -91,7 +95,6 @@ source ~/.bashrc
 
 > **Free tier limits:** 25 requests/day, ~5 requests/minute. Each ticker uses 2 API calls (quote + fundamentals), so the free tier covers ~12 tickers per day. For larger scans, consider the [premium plan](https://www.alphavantage.co/premium/).
 
-
 ### 5. Re-activating in future sessions
 
 The virtual environment only stays active for the current terminal session. Every time you open a new terminal, reactivate it before running any scripts:
@@ -104,16 +107,6 @@ source venv/bin/activate
 > **Note:** The `venv/` folder is already in `.gitignore` and will not be pushed to GitHub.
 
 ---
-### 6. OpenClaw Files and Directories
-File Purpose
-SKILL.md - The skill definition — drop this into your OpenClaw skills folderscripts/indicators.pyReusable library: RSI, MACD, Bollinger Bands, volume spike, signal scoringscripts/analyze_stock.pySingle or multi-stock deep analysis with technical + fundamental outputscripts/screener.pyBatch screener with presets (momentum, value, breakout, oversold reversal)references/scripts_guide.mdUsage reference, popular ticker lists, dashboard guidance
-To get started:
-
-Place SKILL.md in your OpenClaw skills directory
-Put the scripts/ folder alongside it
-Run pip install yfinance pandas numpy in your environment
-Test with: python3 scripts/analyze_stock.py --ticker AAPL
-
 
 ## 🔍 analyze_stock.py — Deep Stock Analysis
 
@@ -287,12 +280,12 @@ Used internally by `analyze_stock.py` and `screener.py`. Import directly for cus
 
 ```python
 from scripts.indicators import rsi, macd, bollinger_bands, sma, volume_spike, signal_summary
-import yfinance as yf
+from scripts.av_client import get_api_key, fetch_daily
 
-ticker = yf.Ticker("AAPL")
-hist = ticker.history(period="6mo")
-close = hist["Close"]
-volume = hist["Volume"]
+api_key = get_api_key()  # reads ALPHA_VANTAGE_KEY from environment
+hist    = fetch_daily("AAPL", api_key)   # returns a pandas DataFrame (OHLCV)
+close   = hist["close"]
+volume  = hist["volume"]
 
 print(rsi(close).iloc[-1])           # RSI value
 print(macd(close))                   # DataFrame: macd, signal, histogram
